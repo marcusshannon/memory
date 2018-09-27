@@ -14,7 +14,7 @@ config :memory, MemoryWeb.Endpoint,
   root: ".",
   version: Application.spec(:phoenix_distillery, :vsn),
   http: [:inet6, port: {:system, "PORT"}],
-  url: [host: "memory1.ironbeard.com", port: 80],
+  url: [host: "memory1.marcusshannon.com", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
@@ -81,11 +81,12 @@ config :logger, level: :info
 # kept out of version control and might be hard to recover
 # or recreate for your teammates (or yourself later on).
 path = Path.expand("~/.config/memory.secret")
+
 unless File.exists?(path) do
   secret = Base.encode16(:crypto.strong_rand_bytes(32))
   File.write!(path, secret)
 end
+
 secret = File.read!(path)
 
-config :memory, MemoryWeb.Endpoint,
-  secret_key_base: secret
+config :memory, MemoryWeb.Endpoint, secret_key_base: secret

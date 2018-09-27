@@ -11,7 +11,7 @@ mkdir -p ~/.config
 
 mix deps.get
 mix compile
-(cd assets && npm install)
+(cd assets && yarn)
 (cd assets && webpack --mode production)
 mix phx.digest
 
