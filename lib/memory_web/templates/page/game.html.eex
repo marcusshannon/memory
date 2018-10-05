@@ -1,0 +1,4 @@
+<script>window.id = "<%= @id %>"s</script>
+<div id="root">
+  React app loading...
+</div>

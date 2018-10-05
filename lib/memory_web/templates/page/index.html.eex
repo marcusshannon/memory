@@ -1,3 +1,5 @@
-<div id="root">
-  React app loading...
-</div>
+<%= form_for @conn, "/game", [method: :get], fn f -> %>
+  <%= text_input f, :game %>
+  <%= submit "Search" %>
+<% end %>
+
