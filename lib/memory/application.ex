@@ -6,13 +6,10 @@ defmodule Memory.Application do
   use Application
 
   def start(_type, _args) do
-    # DynamicSupervisor.start_link(strategy: :one_for_one, name: Memory.Store.Supervisor)
-
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
       MemoryWeb.Endpoint,
-      # Starts a worker by calling: Memory.Worker.start_link(arg)
       {DynamicSupervisor, [strategy: :one_for_one, name: Memory.Store.Supervisor]},
       {Registry, [keys: :unique, name: Memory.Store.Registry]}
     ]
