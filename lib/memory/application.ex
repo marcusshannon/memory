@@ -10,8 +10,8 @@ defmodule Memory.Application do
     children = [
       # Start the endpoint when the application starts
       MemoryWeb.Endpoint,
-      # Starts a worker by calling: Memory.Worker.start_link(arg)
-      # {Memory.Worker, arg},
+      {DynamicSupervisor, [strategy: :one_for_one, name: Memory.Store.Supervisor]},
+      {Registry, [keys: :unique, name: Memory.Store.Registry]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
