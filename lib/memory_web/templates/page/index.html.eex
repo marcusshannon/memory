@@ -1,5 +1,7 @@
-<%= form_for @conn, "/game", [method: :get], fn f -> %>
-  <%= text_input f, :game %>
-  <%= submit "Search" %>
+<div>Join a game!</div>
+<%= form_for @conn, "/join", fn f -> %>
+  <%= text_input f, :user, placeholder: "username" %>
+  <%= text_input f, :game, placeholder: "game" %>
+  <%= submit "Join" %>
 <% end %>
 

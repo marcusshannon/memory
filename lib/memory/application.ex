@@ -26,4 +26,10 @@ defmodule Memory.Application do
     MemoryWeb.Endpoint.config_change(changed, removed)
     :ok
   end
+
+  # defimpl Jason.Encoder, for: [MapSet, Range, Stream] do
+  #   def encode(struct, opts) do
+  #     Jason.Encode.list(Enum.to_list(struct), opts)
+  #   end
+  # end
 end

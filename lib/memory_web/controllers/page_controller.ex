@@ -5,12 +5,13 @@ defmodule MemoryWeb.PageController do
     render(conn, "index.html")
   end
 
-  def game(conn, %{"game" => id}) do
+  def join(conn, %{"user" => user, "game" => game}) do
     conn
-    |> redirect(to: "/game/#{id}")
+    |> put_session(:current_user, user)
+    |> redirect(to: "/game/#{game}")
   end
 
-  def room(conn, %{"id" => id}) do
-    render(conn, "game.html", id: id)
+  def game(conn, %{"game" => game}) do
+    render(conn, "game.html", game: game)
   end
 end
